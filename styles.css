@@ -1,0 +1,96 @@
+:root {
+  --bg: #ffffff;
+  --muted: #6b7280;
+  --accent: #0b5fff;
+  --card: #f8fafc;
+  --max: 900px;
+}
+
+/* General layout */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  background: var(--bg);
+  color: #0f172a;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: var(--max);
+  width: 100%;
+}
+
+/* Text styling */
+.lead { color: var(--muted); line-height: 1.7; }
+.lookup { color: var(--accent); cursor: pointer; font-weight: 500; }
+
+/* Card */
+.card {
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  border: 1px solid #e6eef9;
+  padding: 18px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+/* Typewriter animation */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--accent);
+  animation: typing 4s steps(50, end), blink 0.75s step-end infinite;
+}
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* Popup styling (dark glass effect) */
+#definition-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  padding: 16px;
+}
+
+#definition-popup.hidden { display: none; }
+
+.popup-content {
+  background: rgba(20, 20, 25, 0.9);
+  color: #f8fafc;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 320px;
+  width: 100%;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content h3 { margin-top: 0; color: #60a5fa; }
+.popup-content .example { font-style: italic; color: #9ca3af; }
+
+#close-popup {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #f8fafc;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  body { padding: 16px; }
+  .popup-content { max-width: 90%; font-size: 0.9rem; }
+}
